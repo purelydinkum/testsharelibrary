@@ -42,7 +42,7 @@ def call(String Git_url,
                             bat """
                                 @ECHO OFF
                                 echo Parameter List
-                                echo Scan_Bat_Path : ${Scan_Bat_Path}
+                                echo Scan_Bat_Path : ${params.Scan_Bat_Path}
                                 echo Scan_Type : ${params.Scan_Type}
                             """
                         }
