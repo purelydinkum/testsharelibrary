@@ -29,6 +29,10 @@ def call(String Git_url,
             stage('Set_Parameter') {
                 steps {
                     script {
+                            bat """
+                                @ECHO OFF
+                                echo Set_Parameter
+                            """
                         }
                 }
             }
