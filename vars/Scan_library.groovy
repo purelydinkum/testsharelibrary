@@ -11,20 +11,6 @@ def call(String Git_url,
 
     pipeline {
         agent any
-        parameters {
-            
-            string name: 'Scan_Bat_Path', 
-                   defaultValue: Default_Scan_Bat_Path, 
-                   description: 'Fortify command path.'
-            
-            choice name: 'Scan_Type',
-                   choices: ['1.Generate diff report, and diff files scan.',
-                             '2.Generate diff report, and all files scan.',
-                             '3.Only generate diff report.'],
-                   description: ''
-                   
-        
-        }
         stages {
             stage('Set_Parameter') {
                 steps {
