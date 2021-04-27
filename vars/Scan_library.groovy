@@ -11,10 +11,14 @@ def call(String Git_url,
     String Diff_Report_Path = ''
     String Diff_Files_Path = ''
 
+    if(Default_Scan_Bat_Path == 'default'){
+    
+    Default_Scan_Bat_Path = 'aaa'
+    }
     pipeline {
         agent any
         parameters {
-            script {
+            
             string name: 'Scan_Bat_Path', 
                    defaultValue: Default_Scan_Bat_Path, 
                    description: 'Fortify command path.'
@@ -25,7 +29,7 @@ def call(String Git_url,
                              '3.Only generate diff report.'],
                    description: ''
                    
-        }
+        
         }
         stages {
             stage('Set_Parameter') {
