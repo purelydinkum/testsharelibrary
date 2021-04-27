@@ -65,6 +65,8 @@ def call(String Git_url,
                                  '1.Generate diff report, and diff files scan.',
                                  '2.Generate diff report, and all files scan.'],
                        description: '')
+               ])
+        ])
     }
 
 
