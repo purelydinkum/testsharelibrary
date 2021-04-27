@@ -11,10 +11,6 @@ def call(String Git_url,
     String Diff_Report_Path = ''
     String Diff_Files_Path = ''
 
-    if(Default_Scan_Bat_Path == 'default'){
-    
-    Default_Scan_Bat_Path = 'aaa'
-    }
     
     
     pipeline {
@@ -41,7 +37,7 @@ def call(String Git_url,
                                 @ECHO OFF
                                 echo Set_Parameter
                             """
-                            if (${params.Scan_Bat_Path} != 'default'){
+                            if (Scan_Bat_Path != 'default'){
                                 Scan_Run_Bat_Path = "${WORKSPACE}\\${Scan_Bat_Path}"
                             }
                         }
