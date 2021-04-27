@@ -1,7 +1,7 @@
 def call(String Git_url,
-         String Git_credentials_Id='admin',
          String Param_Type='1',
          String Default_Scan_Bat_Path='default',
+         String Git_credentials_Id='admin',
          String Additional='default') {
     String Scan_Version = ''
     String Scan_Type = ''
@@ -39,6 +39,32 @@ def call(String Git_url,
                        description: '')
             ])
         ])
+    }else if(Param_Type == '2'){
+       properties([
+            parameters([
+                gitParameter( name: 'Git_Version', 
+                     type: 'PT_REVISION',
+                     branch: '',
+                     defaultValue: 'master',
+                     selectedValue: 'NONE',
+                     sortMode: 'NONE',
+                     description: 'Select Git Version',
+                     quickFilterEnabled: true,
+                     useRepository: Git_url),
+                
+                string (name: 'Git_CompareVersion', 
+                       defaultValue: 'HEAD~1', 
+                       description: 'Can use branch, tag, commitSHA or HEAD~n.'),
+                
+                string (name: 'Scan_Bat_Path', 
+                       defaultValue: Default_Scan_Bat_Path, 
+                       description: 'Fortify command path.'),
+                
+                choice (name: 'Scan_Type',
+                       choices: ['3.Only generate diff report.',
+                                 '1.Generate diff report, and diff files scan.',
+                                 '2.Generate diff report, and all files scan.'],
+                       description: '')
     }
 
 
