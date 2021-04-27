@@ -19,11 +19,14 @@ def call(String Git_url,
          choice(name: 'AWS_REGION', choices: PipelineUtils.regions.join('\n'), description: 'AWS Region to build/deploy'),
     ]
     }
-    
+    properties([
+        parameters([
+            booleanParam(defaultValue: false, name: 'BuildAll', description: '')
+        ])
+    ])
 
     pipeline {
         agent any
-        parameters {([]+Params)}
         stages {
             stage('Set_Parameter') {
                 steps {
