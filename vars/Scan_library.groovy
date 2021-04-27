@@ -11,6 +11,10 @@ def call(String Git_url,
     String Diff_Report_Path = ''
     String Diff_Files_Path = ''
 
+    if(Default_Scan_Bat_Path == 'default'){
+    
+    Default_Scan_Bat_Path = 'aaa'
+    }
     
     
     pipeline {
