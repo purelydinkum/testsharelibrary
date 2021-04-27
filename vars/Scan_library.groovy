@@ -23,7 +23,7 @@ def call(String Git_url,
 
     pipeline {
         agent any
-        parameters {(Params)}
+        parameters {([]+Params)}
         stages {
             stage('Set_Parameter') {
                 steps {
