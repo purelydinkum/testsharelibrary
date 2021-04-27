@@ -1,6 +1,6 @@
 def call(String Git_url,
          String Git_credentials_Id='admin',
-         String Default_Scan_Type='1',
+         String Param_Type='1',
          String Default_Scan_Bat_Path='default',
          String Additional='default') {
     String Scan_Version = ''
@@ -10,29 +10,20 @@ def call(String Git_url,
     String Scan_Run_Bat_Path = 'D:\\JenkinsTool\\DDSC_Git\\Fortify_Default.bat'
     String Diff_Report_Path = ''
     String Diff_Files_Path = ''
+    List Params = []
 
     if(Default_Scan_Bat_Path == 'default'){
     
-    Default_Scan_Bat_Path = 'aaa'
+        Params = [
+         choice(name: 'ACCOUNT_NAME', choices: ['account1', 'account2'].join('\n'),  description: 'Account Name'),
+         choice(name: 'AWS_REGION', choices: PipelineUtils.regions.join('\n'), description: 'AWS Region to build/deploy'),
+    ]
     }
     
-    
+
     pipeline {
         agent any
-        parameters {
-            
-            string name: 'Scan_Bat_Path', 
-                   defaultValue: Default_Scan_Bat_Path, 
-                   description: 'Fortify command path.'
-            
-            choice name: 'Scan_Type',
-                   choices: ['1.Generate diff report, and diff files scan.',
-                             '2.Generate diff report, and all files scan.',
-                             '3.Only generate diff report.'],
-                   description: ''
-                   
-        
-        }
+        parameters (Params)
         stages {
             stage('Set_Parameter') {
                 steps {
