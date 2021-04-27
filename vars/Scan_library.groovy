@@ -14,15 +14,13 @@ def call(String Git_url,
 
     if(Default_Scan_Bat_Path == 'default'){
     
-        Params = [
-         choice(name: 'ACCOUNT_NAME', choices: ['account1', 'account2'].join('\n'),  description: 'Account Name'),
-    ]
-    }
-    properties([
+            properties([
         parameters([
-            Params
+            booleanParam(defaultValue: false, name: 'BuildAll', description: '')
         ])
     ])
+    }
+
 
     pipeline {
         agent any
