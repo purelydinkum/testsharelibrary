@@ -20,7 +20,7 @@ def call(String Git_url,
     }
     properties([
         parameters([
-            booleanParam(defaultValue: false, name: 'BuildAll', description: '')
+            Params
         ])
     ])
 
