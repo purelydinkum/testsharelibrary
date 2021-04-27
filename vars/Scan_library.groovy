@@ -16,7 +16,6 @@ def call(String Git_url,
     
         Params = [
          choice(name: 'ACCOUNT_NAME', choices: ['account1', 'account2'].join('\n'),  description: 'Account Name'),
-         choice(name: 'AWS_REGION', choices: PipelineUtils.regions.join('\n'), description: 'AWS Region to build/deploy'),
     ]
     }
     properties([
