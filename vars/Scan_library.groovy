@@ -15,6 +15,8 @@ def call(String Git_url,
     
     Default_Scan_Bat_Path = 'aaa'
     }
+    
+    
     pipeline {
         agent any
         parameters {
@@ -39,7 +41,7 @@ def call(String Git_url,
                                 @ECHO OFF
                                 echo Set_Parameter
                             """
-                            if (Scan_Bat_Path != 'default'){
+                            if (${params.Scan_Bat_Path} != 'default'){
                                 Scan_Run_Bat_Path = "${WORKSPACE}\\${Scan_Bat_Path}"
                             }
                         }
