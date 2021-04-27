@@ -23,10 +23,7 @@ def call(String Git_url,
 
     pipeline {
         agent any
-        properties([
-        buildDiscarder(logRotator(numToKeepStr: '20')),
-        parameters (Params)
-    ])
+        parameters {Params}
         stages {
             stage('Set_Parameter') {
                 steps {
