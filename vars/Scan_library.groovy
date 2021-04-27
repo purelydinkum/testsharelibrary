@@ -10,37 +10,35 @@ def call(String Git_url,
     String Scan_Run_Bat_Path = 'D:\\JenkinsTool\\DDSC_Git\\Fortify_Default.bat'
     String Diff_Report_Path = ''
     String Diff_Files_Path = ''
-    List Params = []
 
-    if(Default_Scan_Bat_Path == 'default'){
-    
-            properties([
-        parameters{
-            gitParameter name: 'Git_Version', 
-                 type: 'PT_REVISION',
-                 branch: '',
-                 defaultValue: 'master',
-                 selectedValue: 'NONE',
-                 sortMode: 'NONE',
-                 description: 'Select Git Version',
-                 quickFilterEnabled: true,
-                 useRepository: Git_url
-            
-            string name: 'Git_CompareVersion', 
-                   defaultValue: 'HEAD~1', 
-                   description: 'Can use branch, tag, commitSHA or HEAD~n.'
-            
-            string name: 'Scan_Bat_Path', 
-                   defaultValue: Default_Scan_Bat_Path, 
-                   description: 'Fortify command path.'
-            
-            choice name: 'Scan_Type',
-                   choices: ['1.Generate diff report, and diff files scan.',
-                             '2.Generate diff report, and all files scan.',
-                             '3.Only generate diff report.'],
-                   description: ''
-        }
-    ])
+    if(Param_Type == '1'){
+        properties([
+            parameters([
+                gitParameter( name: 'Git_Version', 
+                     type: 'PT_REVISION',
+                     branch: '',
+                     defaultValue: 'master',
+                     selectedValue: 'NONE',
+                     sortMode: 'NONE',
+                     description: 'Select Git Version',
+                     quickFilterEnabled: true,
+                     useRepository: Git_url),
+                
+                string (name: 'Git_CompareVersion', 
+                       defaultValue: 'HEAD~1', 
+                       description: 'Can use branch, tag, commitSHA or HEAD~n.'),
+                
+                string (name: 'Scan_Bat_Path', 
+                       defaultValue: Default_Scan_Bat_Path, 
+                       description: 'Fortify command path.'),
+                
+                choice (name: 'Scan_Type',
+                       choices: ['1.Generate diff report, and diff files scan.',
+                                 '2.Generate diff report, and all files scan.',
+                                 '3.Only generate diff report.'],
+                       description: '')
+            ])
+        ])
     }
 
 
